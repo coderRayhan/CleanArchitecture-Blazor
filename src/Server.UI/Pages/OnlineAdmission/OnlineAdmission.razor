@@ -1,0 +1,50 @@
+﻿@page "/oas"
+@layout PublicLayout
+
+@* <MudGrid Class="py-8 pl-11 pr-5 mt-10" Style="background-color: #42aab2;">
+    <MudItem Class="pa-6" Style="background-color:#fff; display:flex;">
+        <MudItem xs="12">Application Terms & Condition</MudItem>
+        <MudItem xs="12">
+            <MudText>
+                আমি এ মর্মে অঙ্গীকার করছি যে, অন-লাইনে আবেদন করার সময় আমি যে সকল তথ্য/তথ্যাদি প্রদান করবো তা সম্পূর্ণ সত্য। নির্বাচিত হলে উল্লেখিত তথ্য/তথ্যাদির স্বপক্ষে সকল মূল সনদ ও কাগজপত্রাদি উপস্থাপন করবো। আমি আরও অঙ্গীকার করছি যে, পরবর্তীতে কোনো তথ্য অসত্য/ভুল প্রমাণিত হলে ভর্তি বাতিলসহ বিধিমোতাবেক যে কোনো ব্যবস্থা গ্রহণ করলে তা মেনে নিতে বাধ্য থাকবো।
+            </MudText>
+        </MudItem>
+    </MudItem>
+</MudGrid> *@
+
+<MudGrid Class="pa-15 mt-10" Style="background-color: #42aab2;">
+    <MudCard Style="padding: 2%;">
+        <MudCardContent>
+            <MudText Typo="Typo.h3" Style="text-decoration: underline; text-decoration-color: black;">
+                Application Terms & Conditions
+            </MudText>
+
+            <MudText Typo="Typo.subtitle1" Class="mt-2">
+                আমি এ মর্মে অঙ্গীকার করছি যে, অন-লাইনে আবেদন করার সময় আমি যে সকল তথ্য/তথ্যাদি প্রদান করবো তা সম্পূর্ণ সত্য।
+                নির্বাচিত হলে উল্লেখিত তথ্য/তথ্যাদির স্বপক্ষে সকল মূল সনদ ও কাগজপত্রাদি উপস্থাপন করবো।
+                আমি আরও অঙ্গীকার করছি যে, পরবর্তীতে কোনো তথ্য অসত্য/ভুল প্রমাণিত হলে ভর্তি বাতিলসহ বিধিমোতাবেক যে কোনো ব্যবস্থা গ্রহণ করলে তা মেনে নিতে বাধ্য থাকবো।
+            </MudText>
+
+            <MudSpacer />
+
+            <MudCardActions Class="d-flex flex-column align-start">
+                <MudCheckBox UncheckedColor="Color.Error" @bind-Value="IsChecked" T="bool" @onchange="() => {IsChecked = !IsChecked;}" Label="I Agree Above Terms & Conditions." Color="Color.Primary" />
+
+                <MudButton Variant="Variant.Filled" Disabled="@(!IsChecked)" Color="Color.Success" Class="mt-2" OnClick="NavigateToForm">
+                    Apply
+                </MudButton>
+            </MudCardActions>
+        </MudCardContent>
+    </MudCard>
+</MudGrid>
+
+@code {
+    private bool IsChecked = false;
+
+    private void NavigateToForm(){
+        if (IsChecked)
+            Navigation.NavigateTo("/Application");
+        else
+            return;
+    }
+}
